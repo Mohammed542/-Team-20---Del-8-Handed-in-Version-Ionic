@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Faults
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-card *ngFor="let details of faultData"> 
+    <ion-card-header>
+    
+      <ion-card-title>
+      <a href="faultdetails" (click)="setID(details.FaultID)">
+        {{details.UnitNumber}}
+      </a>
+      </ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <p><b>Fault Type:</b> {{details.Description}}</p>
+      <p><b>Fault Status:</b> {{details.Status}}</p>
+      <p><b>Date:</b> {{details.Date | date}}</p>
+    </ion-card-content>
+  </ion-card>
+
+  
+</ion-content>

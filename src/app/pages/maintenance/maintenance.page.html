@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title> Maintenance </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let details of maintenanceData">
+    <ion-card-header>
+      <ion-card-title
+        ><a (click)="details.Status === 'Completed' ? onShowPopUp() : setID(details.MaintenanceID, details.Status)"
+          >{{details.BuildingName}}</a
+        ></ion-card-title
+      >
+    </ion-card-header>
+
+    <ion-card-content>
+      <p><b>Maintenance Type:</b> {{details.Description}}</p>
+      <p><b>Maintenance Status:</b> {{details.Status}}</p>
+      <p><b>Date:</b> {{details.Date | date}}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

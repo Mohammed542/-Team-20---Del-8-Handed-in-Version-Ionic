@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title> Edit My Profile </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let details of serviceProviderData">
+    <ion-card-header>
+      <ion-card-title>
+        <p>{{ details.Name }} {{ details.Surname }} 's Profile</p>
+      </ion-card-title>
+    </ion-card-header>
+
+    <!--<form [formGroup]="form" (ngSubmit)="saveChanges(form.value)">
+      <ion-card-content>
+        <p><b>Name:</b></p>
+        <ion-input value="{{ details.Name }}" formControlName="Name"></ion-input>
+
+        <p><b>Surame:</b></p>
+        <ion-input value="{{ details.Surname }}" formControlName="Surname"></ion-input>
+
+        <p><b>Cellphone Number:</b></p>
+        <ion-input value="{{ details.CellphoneNumber }}" formControlName="CellphoneNumber"></ion-input>
+
+        <p><b>ID Number:</b></p>
+        <ion-input value="{{ details.IDNumber }}" formControlName="IDNumber"></ion-input>
+
+        <p><b>Category Name:</b></p>
+        <ion-input value="{{ details.Description }}" formControlName="Description"></ion-input>
+
+        <p><b>Email Address:</b></p>
+        <ion-input value="{{ details.EmailAddress }}" formControlName="EmailAddress"></ion-input>
+
+        <p><b>Date Employed:</b></p>
+        <ion-input value="{{details.Date | date}}" formControlName="Date"></ion-input>
+
+        <p><b>Status:</b></p>
+        <ion-input formControlName="Status" value="{{ details.Status }}"></ion-input>
+
+        <ion-button
+          expand="block"
+          color="dark"
+          fill="outline"
+          rooterDirection="root">
+          Save Changes
+        </ion-button>
+      </ion-card-content>
+    </form>-->
+
+      <ion-card-content>
+        <p><b>Name:</b></p>
+        <ion-input value="{{ details.Name }}" (ionInput)="changeName($event)"></ion-input>
+
+        <p><b>Surame:</b></p>
+        <ion-input value="{{ details.Surname }}" (ionInput)="changeSurname($event)"></ion-input>
+
+        <p><b>Cellphone Number:</b></p>
+        <ion-input value="{{ details.CellphoneNumber }}" (ionInput)="changeCell($event)"></ion-input>
+
+        <p><b>ID Number:</b></p>
+        <ion-input value="{{ details.IDNumber }}" (ionInput)="changeID($event)" disabled></ion-input>
+
+        <p><b>Category Name:</b></p>
+        <ion-input value="{{ details.Description }}" (ionInput)="changeCategory($event)" disabled></ion-input>
+
+        <p><b>Email Address:</b></p>
+        <ion-input value="{{ details.EmailAddress }}" (ionInput)="changeEmail($event)" disabled></ion-input>
+
+        <p><b>Date Employed:</b></p>
+        <ion-input value="{{details.Date | date}}" (ionInput)="changeDate($event)" disabled></ion-input>
+
+        <p><b>Status:</b></p>
+        <ion-input value="{{ details.Status }}" (ionInput)="changeStatus($event)" disabled></ion-input>
+
+        <ion-button
+          expand="block"
+          color="dark"
+          fill="outline"
+          rooterDirection="root"
+          (click)="saveChanges()">
+          Save Changes
+        </ion-button>
+        <ion-button expand="block" color="danger" fill="outline" (click)="exit()">Cancel</ion-button>
+      </ion-card-content>
+  </ion-card>
+</ion-content>

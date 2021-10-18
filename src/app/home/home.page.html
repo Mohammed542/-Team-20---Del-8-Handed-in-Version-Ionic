@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Home
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button ></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-card *ngFor=" let details of serviceProviderData">
+    <ion-card-header>
+      <ion-card-title>
+        <p style="text-align: center;">Welcome {{ details.Name }} {{ details.Surname }}</p>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p style="text-align: right;">{{today}}</p>
+      <br>
+      <!-- <h4>Achievements:</h4>
+      <br>
+      <p style="text-align: right;">Total number of maintenances:</p>
+      <p style="text-align: right;">Number of maintenances completed:</p> -->
+      <h4>Current Maintenances In Progress:</h4>
+      <br *ngIf="!mdLenght">
+      <h5 *ngIf="!mdLenght">Unfortunately you do not have any maintenances that are currently active!</h5>
+    </ion-card-content>
+    
+    <div *ngFor="let details of maintenanceData">
+      <ion-card-header>
+        <ion-card-title
+          ><a href="maintenancedetails" (click)="setID(details.MaintenanceID)"
+            >{{details.BuildingName}}</a
+          ></ion-card-title
+        >
+      </ion-card-header>
+  
+      <ion-card-content>
+        <p><b>Maintenance Type:</b> {{details.Description}}</p>
+        <p><b>Maintenance Status:</b> {{details.Status}}</p>
+        <p><b>Date:</b> {{details.Date | date}}</p>
+      </ion-card-content>
+    </div>
+  </ion-card>
+
+  <!-- <ion-card *ngFor="let details of maintenanceData">
+    <ion-card-header>
+      <ion-card-title
+        ><a href="maintenancedetails" (click)="setID(details.MaintenanceID)"
+          >{{details.BuildingName}}</a
+        ></ion-card-title
+      >
+    </ion-card-header>
+
+    <ion-card-content>
+      <p><b>Maintenance Type:</b> {{details.Description}}</p>
+      <p><b>Maintenance Status:</b> {{details.Status}}</p>
+      <p><b>Date:</b> {{details.Date | date}}</p>
+    </ion-card-content>
+  </ion-card> -->
+
+</ion-content>

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div style="padding: 1em;">
+    <div>
+      <img src="assets/logo.png" alt="Prime Properties Logo Here">
+    </div>
+    <form [formGroup]="form" (ngSubmit)="login($event)" style="text-align: center;">
+      <ion-item>
+        <ion-label position="stacked">Username</ion-label>
+        <ion-input placeholder="Username" type="text" placeholder="Username" name="Username"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input formControlName="Password" [type]="passwordType" placeholder="Password" name="Password"></ion-input>
+        <ion-icon item-end [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
+      </ion-item>
+
+      <div style="margin-top: 2em;">
+        <ion-button type="submit" expand="block" color="success" style="margin-bottom: 2em;" [disabled]="loading">Login</ion-button>
+
+        <ion-button type="submit" expand="block" color="primary" routerLink="/reset" style="margin-bottom: 2em;">Reset
+          Password</ion-button>
+      </div>
+      <a class="main-nav__link" routerLink="/about">About</a>
+    </form>
+  </div>
+</ion-content>

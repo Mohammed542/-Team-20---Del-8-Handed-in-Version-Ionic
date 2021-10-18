@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title> Maintenance Details </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="maintenanceData">
+  <ion-card style="border-style: solid; margin-top: 5%">
+    <ion-item>
+      <ion-label>Building Name: {{maintenanceData.BuildingName}}</ion-label>
+      <!-- Autopopulated information -->
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Maintenance Type: {{maintenanceData.Description}}</ion-label>
+      <!-- Autopopulated information -->
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Amount Quoted: {{maintenanceData.AmountQuoted}}</ion-label>
+      <!-- Autopopulated information -->
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Date Employed: {{maintenanceData.DateofEmployment | date}}</ion-label>
+      <!-- Autopopulated information -->
+    </ion-item>
+
+    <div *ngIf="progressShown">
+      <ion-item>
+        <ion-label>Mark as Complete:</ion-label>
+        <ion-toggle
+          color="primary"
+          [(ngModel)]="isShown"
+          (click)="toggleShow()"
+          [disabled]="status === 'In Progress'"
+        ></ion-toggle>
+      </ion-item>
+
+      <br /><br />
+
+      <div *ngIf="isShown">
+        <p class="centre">
+          <b><u>Please upload a photo of the completed Maintenance:</u> </b>
+        </p>
+
+        <div class="centre">
+          <!-- <img
+            src="https://icons-for-free.com/iconfiles/png/512/box+document+outline+share+top+upload+icon-1320195323221671611.png"
+            alt="Upload Icon"
+            *ngIf="!object.url"
+            style="width: 140px; height: 140px"
+          /><br />
+
+          <img
+            *ngIf="object.url"
+            [src]="object.url"
+            class="image"
+            name="MaintenancePhoto1"
+            id="MaintenancePhoto1"
+            #MaintenancePhoto1="ngModel"
+            [(ngModel)]="service.photoData.MaintenancePhoto1"
+          /> -->
+
+          <input type="file" (change)="file($event.target)" accept="image/*"/>
+          <img
+          *ngIf="object.url"
+          [src]="object.url"
+          class="image">
+
+        </div>
+        <br />
+        <ion-button
+          expand="block"
+          color="dark"
+          fill="outline"
+          rooterDirection="root"
+          (click)="confirmCompletion()"
+          >Confirm Completion</ion-button
+        >
+        <br />
+      </div>
+
+      <ion-button
+        expand="block"
+        color="dark"
+        fill="outline"
+        rooterDirection="root"
+        (click)="confirmMarkProgress()"
+        [disabled]="isShown"
+        >Mark In Progress</ion-button
+      ><br />
+    <ion-button expand="block" color="danger" fill="outline" (click)="exit2()">Cancel</ion-button>
+    <br>
+  </div>
+  </ion-card>
+
+  <!--
+<div *ngIf="progressShown">
+  <ion-button expand="block" color="dark" fill="outline" routerLink="/maintenanceprogress" rooterDirection="root" (click)="confirmMarkProgress()">Mark Maintenance In Progress</ion-button><br>
+</div> -->
+
+
+
+  <div *ngIf="addProgressShown">
+    <br /><br />
+    <ion-button
+      expand="block"
+      color="dark"
+      fill="outline"
+      rooterDirection="root"
+      (click)="showProgress()"
+      >Add Maintenance Progress</ion-button
+    ><br />
+    <ion-button expand="block" color="danger" fill="outline" (click)="exit()">Exit</ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title> Fault Details </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card style="border-style: solid; margin-top: 5%">
+    <ion-item>
+      <ion-label>Building Name:</ion-label>
+      <!-- Autopopulated information -->
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Unit Number:</ion-label>
+      <!-- Autopopulated information -->
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fault Details:</ion-label>
+      <!-- Autopopulated information -->
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Amount Quoted:</ion-label>
+      <!-- Autopopulated information -->
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Date of Employment:</ion-label>
+      <!-- Autopopulated information -->
+    </ion-item>
+    <ion-item>
+      <ion-label>Mark Fault as Complete:</ion-label>
+      <ion-toggle
+        color="primary"
+        (click)="toggleShow()"
+      ></ion-toggle> </ion-item
+    ><br /><br />
+
+    <ion-button
+      expand="block"
+      color="dark"
+      fill="outline"
+      routerLink="/faultprogress"
+      rooterDirection="root"
+      (click)="confirmMarkProgress()"
+      >Mark Fault In Progress</ion-button
+    ><br />
+  </ion-card>
+
+  <div *ngIf="isShown">
+    <p class="centre">
+      <b><u>Please upload a photo of the completed Fault:</u> </b>
+    </p>
+
+    <div class="centre">
+      <img
+        src="https://icons-for-free.com/iconfiles/png/512/box+document+outline+share+top+upload+icon-1320195323221671611.png"
+        alt=""
+        style="width: 150px; height: 150px"
+      /><br />
+      <ion-button size="small">Select Files</ion-button><br />
+      <ion-item>
+        <ion-label position="stacked">Date of Completion</ion-label>
+        <ion-input type="date"></ion-input> </ion-item
+      ><br />
+      <ion-button
+        expand="block"
+        color="dark"
+        fill="outline"
+        routerLink="/faultprogress"
+        rooterDirection="root"
+        (click)="confirmCompletion()"
+        >Confirm Completion</ion-button
+      >
+    </div>
+  </div>
+</ion-content>

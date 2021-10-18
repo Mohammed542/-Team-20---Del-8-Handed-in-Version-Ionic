@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      My Profile
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-card *ngFor="let details of serviceProviderData"> 
+    <ion-card-header>
+      <ion-card-title>
+        <p>{{ details.Name }} {{ details.Surname }}'s Profile</p>
+      </ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <p><b>Name:</b> {{details.Name}}</p>
+      <p><b>Surame:</b> {{details.Surname}}</p>
+      <p><b>Cellphone Number:</b> {{details.CellphoneNumber}}</p>
+      <p><b>ID Number:</b> {{details.IDNumber}}</p>
+      <p><b>Category Name:</b> {{details.Description}}</p>
+      <p><b>Email Address:</b> {{details.EmailAddress}}</p>
+      <p><b>Date Employed:</b> {{details.Date | date}}</p>
+      <p><b>Status:</b> {{details.Status}}</p>
+    </ion-card-content>
+
+    <ion-button
+      expand="block"
+      color="dark"
+      fill="outline"
+      rooterDirection="root"
+      (click)="editProfileRequest(details.ServiceProviderID)"
+      routerLink="/editmyprofile">
+      Edit My Profile
+    </ion-button>
+
+  </ion-card>
+</ion-content>

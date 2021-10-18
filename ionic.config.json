@@ -1,0 +1,8 @@
+{
+  "name": "aasifionic",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}
